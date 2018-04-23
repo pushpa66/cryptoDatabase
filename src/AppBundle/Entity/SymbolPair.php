@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Symbol
  *
- * @ORM\Table(name="symbolPair")
+ * @ORM\Table(name="symbol_pair")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SymbolPairRepository")
  */
 class SymbolPair
