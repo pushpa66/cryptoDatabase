@@ -19,7 +19,7 @@ class DefaultController extends Controller
     {
         $allData = $this->getDoctrine()
             ->getRepository(Data::class)
-            ->findAll();
+            ->findBy(array(), array("id"=>'DESC'));
         return $this->render('pages/data.html.twig', array(
             'allData' => $allData
         ));
