@@ -21,6 +21,8 @@
             <th>MacdSignal</th>
             <th>CloseGainLoss</th>
             <th>Rsi</th>
+            <th>Edit</th>
+            <th>Delete</th>
             </thead>
             <tbody>
             {% for data in allData %}
@@ -42,6 +44,8 @@
                     <td>{{ data.macdSignal }}</td>
                     <td>{{ data.closeGainLoss }}</td>
                     <td>{{ data.rsi }}</td>
+                    <td><a href="{{ path('editData', {'id': data.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('deleteData', {'id': data.id}) }}">Delete</a></td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -26,6 +26,71 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/api/edit", name="editData")
+     */
+    public function editAction(Request $request)
+    {
+        $id = $request->get('id');
+
+        $data = $this->getDoctrine()
+            ->getRepository(Data::class)
+            ->findOneBy(array('id' => $id));
+        return $this->render('pages/edit_data.html.twig', array(
+            'data' => $data
+        ));
+    }
+
+    /**
+     * @Route("/api/save", name="saveData")
+     */
+    public function saveDataAction(Request $request)
+    {
+
+        $readData = $request->request->all();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $data = $entityManager->getRepository(Data::class)
+            ->findOneBy(array('id' => $readData['id']));
+
+        $data->setSma20($readData['sma20']);
+        $data->setSma($readData['sma']);
+        $data->setBbUpper($readData['bbUpper']);
+        $data->setBbLower($readData['bbLower']);
+        $data->setEma($readData['ema']);
+        $data->setMacd($readData['macd']);
+        $data->setMacdSignal($readData['macdSignal']);
+        $data->setCloseGainLoss($readData['closeGainLoss']);
+        $data->setRsi($readData['rsi']);
+
+        $entityManager->flush();
+
+        $saveData = $entityManager->getRepository(Data::class)
+            ->findOneBy(array('id' => $readData['id']));
+
+
+        return $this->render('pages/edit_success.html.twig', array(
+            'data' => $saveData
+        ));
+    }
+
+    /**
+     * @Route("/api/delete", name="deleteData")
+     */
+    public function deleteAction(Request $request)
+    {
+        $id = $request->get('id');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $data = $entityManager->getRepository(Data::class)
+            ->findOneBy(array('id' => $id));
+
+        $entityManager->remove($data);
+        $entityManager->flush();
+
+        return $this->render('pages/delete_success.html.twig');
+    }
+
+    /**
      * @Route("/api/binance", name="binance")
      */
     public function getFromBinance(Request $request){

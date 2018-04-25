@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row" style="padding-top: 10px">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <form class="form-horizontal" action="{{ path('saveData') }}" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id">Id:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="id" class="form-control" id="id" value="{{ data.id }}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="exchange">Exchange:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="exchange" class="form-control" id="exchange" value="{{ data.exchange.name}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="symbolPair">SymbolPair:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="symbolPair" class="form-control" id="symbolPair" value="{{ data.symbolPair.symbol}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="dateTime">DateTime:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="dateTime" class="form-control" id="dateTime" value="{{ data.dateTime}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="high">High:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="high" class="form-control" id="high" value="{{ data.high}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="low">Low:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="low" class="form-control" id="low" value="{{ data.low}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="close">Close:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="close" class="form-control" id="close" value="{{ data.close}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="volume">Volume:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="volume" class="form-control" id="volume" value="{{ data.volume}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="sma20">Sma20:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="sma20" class="form-control" id="sma20" value="{{ data.sma20}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="sma">Sma:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="sma" class="form-control" id="sma" value="{{ data.sma}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="bbUpper">BbUpper:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="bbUpper" class="form-control" id="bbUpper" value="{{ data.bbUpper}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="bbLower">BbLower:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="bbLower" class="form-control" id="bbLower" value="{{ data.bbLower}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="ema">Ema:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="ema" class="form-control" id="ema" value="{{ data.ema}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="macd">Macd:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="macd" class="form-control" id="macd" value="{{ data.macd}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="macdSignal">MacdSignal:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="macdSignal" class="form-control" id="macdSignal" value="{{ data.macdSignal}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="closeGainLoss">CloseGainLoss:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="closeGainLoss" class="form-control" id="closeGainLoss" value="{{ data.closeGainLoss}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="rsi">Rsi:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="rsi" class="form-control" id="rsi" value="{{ data.rsi}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
