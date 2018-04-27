@@ -97,13 +97,16 @@ class DefaultController extends Controller
 
         $exchangeId = 1;
 
-        $pairs = $this->getDoctrine()
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $pairs = $entityManager
             ->getRepository(PairMap::class)
             ->findBy(
                 array('exchange' => $exchangeId)
             );
 
         if (sizeof($pairs) > 0){
+
             foreach ($pairs as $pair){
                 $pairSymbol = $pair->getSymbol();
                 $symbolPair = $pair->getSymbolPair();
@@ -177,13 +180,14 @@ class DefaultController extends Controller
                     $data->setExchange($exchange);
                     $data->setSymbolPair($symbolPair);
 
-                    $entityManager = $this->getDoctrine()->getManager();
+//                    $entityManager = $this->getDoctrine()->getManager();
 
                     // tells Doctrine you want to (eventually) save the Product (no queries yet)
                     $entityManager->persist($data);
-                    $entityManager->flush();
+
                 }
             }
+            $entityManager->flush();
         }
 
         $status = array("status"=>"OK");
