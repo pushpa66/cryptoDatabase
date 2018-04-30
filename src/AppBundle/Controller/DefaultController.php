@@ -39,7 +39,11 @@ class DefaultController extends Controller
         );
 
         // parameters to template
-        return $this->render('pages/list.html.twig', array('pagination' => $pagination));
+        return $this->render('pages/list.html.twig', array(
+            'pagination' => $pagination,
+            'pageCount' => $pagination->getTotalItemCount()
+            )
+        );
     }
 
     /**
